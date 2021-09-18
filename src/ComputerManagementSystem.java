@@ -57,6 +57,7 @@ public class ComputerManagementSystem {
         scanner = new Scanner(System.in);
     }
 
+    // Start a program by showing a menu
     public void start(){
 
         int menuOption;
@@ -71,6 +72,7 @@ public class ComputerManagementSystem {
         }
     }
 
+    // Get an input for the menu selection from users
     public int getUserSelection (int lower, int upper) {
 
         int userInput;
@@ -91,6 +93,7 @@ public class ComputerManagementSystem {
         return userInput;
     }
 
+    // Show the menu
     public void showMenu() {
         System.out.println("\n:::::::::::::::::::::::::::::::::::::::::::::::::");
         System.out.println("1. Load a log file");
@@ -101,6 +104,7 @@ public class ComputerManagementSystem {
         System.out.println(":::::::::::::::::::::::::::::::::::::::::::::::::\n");
     }
 
+    // Action for the menu selection from above
     public void processMenuOption(int menuOption) {
         switch (menuOption) {
             case 1:
@@ -127,6 +131,7 @@ public class ComputerManagementSystem {
     }
 
 
+    // Load a log data from a text file
     public void loadLogData() {
 
         String fileName;   // File Name from user input
@@ -139,12 +144,6 @@ public class ComputerManagementSystem {
         System.out.println("Name of the File: " + fileName);
 
         try {
-
-            // Load a log file
-            //File file = new File("/Users/hyejung/Google Drive/Hobby - Computing/Programming/Java/ICT711/Assignment/src/Data/" + fileName);
-            //LogFileArrayList file = TxtFile.read("/Users/hyejung/Google Drive/Hobby - Computing/Programming/Java/ICT711/Assignment/src/Data/" + fileName);
-
-            // 여기 하는 중: 텍스트파일을 어레이 리스트로 읽어와야함 ㅠㅠㅠ
 
             // Load a log file
             File file = new File("/Users/hyejung/Google Drive/Hobby - Computing/Programming/Java/ICT711/Assignment/src/Data/" + fileName);
@@ -165,15 +164,7 @@ public class ComputerManagementSystem {
                 logFileArrayList.add(new LogFileData(timestamp, nameOfMachine, typeOfEvents, additionalInfo, actionResults));
 
             }
-            /*
-            while (fileScanner.hasNextLine()) {
-            <or>
-            for (int i = 0; i < numberOfLines; i++) {
-                String line = fileScanner.nextLine();
-                //String[] eachLine = line.split(" ");
-                System.out.println(line);
-            }
-            */
+
         } catch (IOException e) {   // FileNotFoundException e   --> e.printStackTrace();
             System.out.println("\nThe file name '" + fileName +"' is an invalid name. Please start again.");
             //e.printStackTrace();
@@ -182,56 +173,13 @@ public class ComputerManagementSystem {
         fileScanner.close();
 
     }
-/*
-    public void loadLogData() {
-        //System.out.println("1111. Loading a log file....");
-
-        String fileName;   // File Name from user input
-        Scanner fileScanner = null;   // Load a file
-        String timestamp, nameOfMachine, typeOfEvents, additionalInfo, actionResults;
-
-        try {
-            // Get a name of a log file from users
-            System.out.print("Enter a name of the log file you want to load (e.g. <logfile1.log>): ");
-            fileName = scanner.next();
-            System.out.println("Name of the File: " + fileName);
-
-            // Load a log file
-            File file = new File("/Users/hyejung/Google Drive/Hobby - Computing/Programming/Java/ICT711/Assignment/src/Data/" + fileName);
-            fileScanner = new Scanner(file);
-            int numberOfLines = fileScanner.nextInt();
-
-
-            //while ((line = fileScanner.nextLine()) != null) {
-            for (int i = 0; i < numberOfLines; i++) {
-
-                        String line = fileScanner.nextLine();
-                        String[] eachLine = line.split(" ");
-
-                        System.out.println(line);
-
-                        LogDB logDB = new LogDB();
-                /*
-                        // Timestamp is not recorded
-                        logDB.setNameOfMachine(eachLine[1]);
-                        logDB.setTypeOfEvents(eachLine[2]);
-                        logDB.setAdditionalInfo(eachLine[3]);
-                        logDB.setActionResults(eachLine[4]);
-            }
-        } catch (IOException e) {
-            System.out.println("\nIt's an invalid name. Please start again.");
-            //e.printStackTrace();
-            loadLogData();
-        }
-    }
-*/
 
     // Display all machines having any events
     public void displayAllMachines() {
 
         //Iterator <String> keys = logData.keySet().iterator();    // Set an iterator
 
-        System.out.println(LogFileData());
+        //System.out.println(LogFileData());
         //for (int i = 0; i < loadLogData().length; i++) {
         //    System.out.println(logFileArrayList);
         //}

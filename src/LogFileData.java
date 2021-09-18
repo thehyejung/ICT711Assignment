@@ -93,7 +93,9 @@ public class LogFileData {
 
     public static List<LogFileData> getAllLogFileData () {
 
+        // need to work here
 
+        return (List<LogFileData>) allLogs.clone() ;
 
     }
 
